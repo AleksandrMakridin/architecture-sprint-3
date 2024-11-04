@@ -96,7 +96,7 @@
 1. Device Management Service:
     - Управление устройствами (Взаимодействие с устройствами через стандартные протоколы - согласно заданию).
 
-2. Monitoring Service**:
+2. Monitoring Service:
     - Получение и хранение данных.
     
 3. User Service:

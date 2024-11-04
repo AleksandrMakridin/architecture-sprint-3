@@ -102,7 +102,7 @@
 3. User Service:
     - Регистрация, авторизация и аутентификация пользователей.Управление профилями пользователей.
 
-4. Scenario Management Service:
+4. Script Management Service:
     - Создание и управление автоматическими сценариями работы устройств.
 
 5. Notification Service:

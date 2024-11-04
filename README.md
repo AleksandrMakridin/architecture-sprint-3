@@ -130,7 +130,7 @@
 
 ## 2.3. Визуализируйте архитектуры:. TO-BE
 ## C4 — Уровень контейнеров (Containers). 
-https://github.com/AleksandrMakridin/architecture-sprint-3/blob/sprint-3/sprint3task2.3.1Containers.puml
+[схема](https://github.com/AleksandrMakridin/architecture-sprint-3/blob/sprint-3/sprint3task2.3.1Containers.puml)
 
 
 # Базовая настройка

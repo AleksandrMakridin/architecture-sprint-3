@@ -57,7 +57,7 @@
 
 
 ## 1.5. Визуализируйте контекст системы AS-IS. 
-схема
+[схема](https://github.com/AleksandrMakridin/architecture-sprint-3/blob/sprint-3/sprint3task1.puml)
 
 
 

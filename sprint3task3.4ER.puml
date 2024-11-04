@@ -41,8 +41,8 @@ entity "IndicatorData" as indicatorData {
     parameter list is incomplete
 }
 
-user ||--o{ house : "owns"
-house ||--o{ device : "contains"
-device ||--o| deviceType : "has"
-device ||--o{ indicatorData : "generates"
+user ||--o{ house 
+house ||--o{ device 
+device ||--o| deviceType 
+device ||--o{ indicatorData 
 @enduml

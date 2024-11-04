@@ -138,6 +138,12 @@
 
 
 ## C4 — Уровень кода (Code)
+[схема] (https://github.com/AleksandrMakridin/architecture-sprint-3/blob/sprint-3/sprint3task2.3.3Code.puml)
+
+
+# Задание 3.  Разработка ER-диаграммы
+
+## 3.1 Идентифицируйте сущности. 
 
 
 

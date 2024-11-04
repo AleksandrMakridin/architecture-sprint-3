@@ -132,6 +132,14 @@
 ## C4 — Уровень контейнеров (Containers). 
 [схема](https://github.com/AleksandrMakridin/architecture-sprint-3/blob/sprint-3/sprint3task2.3.1Containers.puml)
 
+## C4 — Уровень компонентов (Components).
+
+[схема](https://github.com/AleksandrMakridin/architecture-sprint-3/blob/sprint-3/sprint3task2.3.2Components.puml)
+
+
+## C4 — Уровень кода (Code)
+
+
 
 # Базовая настройка
 

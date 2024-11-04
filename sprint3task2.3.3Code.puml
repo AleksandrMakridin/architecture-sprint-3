@@ -1,0 +1,37 @@
+@startuml
+class DeviceService {
+    + turnOnDevice(deviceId: Long): void
+    + turnOffDevice(deviceId: Long): void
+    + setTargetIndicator(deviceId: Long, Indicator: Double): void
+    - validateDevice(device: Device): void
+    - publishDeviceEvent(event: DeviceEvent): void
+}
+
+class DeviceRepository {
+    + findById(deviceId: Long): Device
+    + save(device: Device): Device
+}
+
+class KafkaProducer {
+    + publishEvent(event: DeviceEvent): void
+}
+
+class Device {
+    + Long id
+    + String name
+    + boolean isOn
+    + Double targetIndicator
+}
+
+class DeviceEvent {
+    + Long deviceId
+    + String eventType
+    + String eventData
+}
+
+DeviceService --> DeviceRepository : uses
+DeviceService --> KafkaProducer : uses
+DeviceService --> Device : manipulates
+DeviceService --> DeviceEvent : creates
+
+@enduml

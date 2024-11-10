@@ -1,0 +1,48 @@
+@startuml
+entity "User" as user {
+    * id : Long
+    --
+    name : String
+    email : String
+    password : String
+    parameter list is incomplete
+}
+
+entity "House" as house {
+    * id : Long
+    --
+    user_id : Long
+    address : String
+    parameter list is incomplete
+}
+
+entity "Device" as device {
+    * id : Long
+    --
+    type_id : Long
+    house_id : Long
+    status : String
+    parameter list is incomplete
+}
+
+entity "DeviceType" as deviceType {
+    * id : Long
+    --
+    name : String
+    parameter list is incomplete
+}
+
+entity "IndicatorData" as indicatorData {
+    * id : Long
+    --
+    device_id : Long
+    timestamp : Date
+    data : String
+    parameter list is incomplete
+}
+
+user ||--o{ house 
+house ||--o{ device 
+device ||--o| deviceType 
+device ||--o{ indicatorData 
+@enduml

@@ -1,0 +1,59 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+title Container Diagram for Smart Home Microservices to-be
+
+Person(user, "User", "A user of the smart home system")
+
+System_Boundary(SmartHomeSystem, "Smart Home System") {
+  Container(apiGateway, "API Gateway", "Handles incoming requests and routes them to appropriate services")
+  Container(deviceManagementService, "Device Management Service", "Manages device operations")
+  Container(monitoringService, "Monitoring Service", "Monitors and reports")
+  Container(userService, "User Service","Manages user information and authentication")
+  Container(scriptManagementService, "Script Management Service", "Manages automation scripts")
+  Container(notificationService, "Notification Service", "Sends notifications to users")
+
+  ContainerDb(deviceDb, "Device DB", "PostgreSQL", "Stores device information")
+  ContainerDb(monitoringDb, "monitoring DB", "PostgreSQL", "Stores data")
+  ContainerDb(userDb, "User DB", "PostgreSQL", "Stores user information")
+  ContainerDb(notificationDb, "Notification DB", "MongoDB", "Stores notification data")
+  ContainerDb(scriptDb, "script DB", "PostgreSQL", "Stores script information")
+
+  Container(kafka, "Kafka", "Apache Kafka", "Message broker for asynchronous communication")
+}
+
+Rel(user, apiGateway, "Uses")
+Rel(apiGateway, deviceManagementService, "Routes requests to")
+Rel(apiGateway, monitoringService, "Routes requests to")
+Rel(apiGateway, userService, "Routes requests to")
+Rel(apiGateway, scriptManagementService, "Routes requests to")
+Rel(apiGateway, notificationService, "Routes requests to")
+
+Rel(deviceManagementService, deviceDb, "Reads from and writes to")
+Rel(monitoringService, monitoringDb, "Reads from and writes to")
+Rel(userService, userDb, "Reads from and writes to")
+Rel(notificationService, notificationDb, "Reads from and writes to")
+Rel(scriptManagementService, scriptDb, "Reads from and writes to")
+
+Rel(deviceManagementService, kafka, "Publishes events to", "Kafka topic")
+Rel(monitoringService, kafka, "Publishes events to", "Kafka topic")
+Rel(notificationService, kafka, "Subscribes to events from", "Kafka topic")
+Rel(scriptManagementService, kafka, "Subscribes to events from", "Kafka topic")
+
+Container_Ext(sensor, "Sensor", "IoT Device", "Sends data to the system")
+Rel(sensor, deviceManagementService, "Sends data to")
+Rel(sensor, monitoringService, "Sends monitoring data to")
+Rel(sensor, kafka, "Publishes events to", "Kafka topic")
+
+Container_Ext(otherDevice, "Other Device", "IoT Device", "Sends data to the system")
+Rel(otherDevice, deviceManagementService, "Sends data to")
+Rel(otherDevice, kafka, "Publishes events to", "Kafka topic")
+
+Container(scriptManagementService, "script Management Service", "Manages automation scripts")
+Rel(scriptManagementService, scriptDb, "Reads from and writes to")
+Rel(scriptManagementService, kafka, "Subscribes to events from", "Kafka topic")
+Rel(userService, kafka, "Publishes user data changes to", "Kafka topic")
+Rel(scriptManagementService, kafka, "Subscribes to user data changes from", "Kafka topic")
+}
+
+@enduml

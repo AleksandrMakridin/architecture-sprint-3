@@ -1,0 +1,23 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+title Component Diagram for Device Management Service TO-BE
+
+
+Container_Boundary(deviceManagementService, "Device Management Service") {
+    Component(apiGateway, "API Gateway", "Handles incoming requests and routes them to appropriate services")
+    Component(deviceController, "Device Controller", , "HTTP requests for device operations")
+    Component(deviceService, "Device Service", , "Contains business logic for device management")
+    Component(deviceRepository, "Device Repository", , "Handles database operations for devices")
+    Component(kafkaProducer, "Kafka Producer", , "Publishes events to Kafka")
+}
+
+
+
+Rel(apiGateway, deviceController, "Routes requests to")
+
+Rel(deviceController, deviceService, "Uses")
+Rel(deviceService, deviceRepository, "Uses")
+Rel(deviceService, kafkaProducer, "Publishes events to")
+
+@enduml
